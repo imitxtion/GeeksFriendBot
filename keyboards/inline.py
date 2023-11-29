@@ -19,3 +19,12 @@ main_kb = InlineKeyboardMarkup(
         ]
     ]
 )
+
+tiktok_assistant_kb = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(text='Video Downloader 🎥', callback_data='download_video'),
+            InlineKeyboardButton(text='Tags Generator 🏷️', callback_data='generate_tags')
+        ]
+    ]
+)

@@ -23,5 +23,18 @@ I'm a multifunctional bot, ready to offer you a wide range of capabilities. Here
 
 Feel free to explore these features ✨
 """
-
 menu = ''
+tiktok_assistant_menu = """
+<b>Welcome to the TikTok Assistant!</b> 
+Choose an option to enhance your TikTok experience:
+
+<b>1. Video Downloader 🎥</b>
+   Send me a TikTok video link, and I'll provide you with the downloadable file, <u>without any watermarks</u>.
+
+<b>2. Tags Generator 🏷️</b>
+   Generate tags for your TikTok video to boost its visibility and promote it effectively.
+"""
+tt_video_download = """
+Ok. Let\'s do it!
+Send me the link to a video that you want to download.
+"""

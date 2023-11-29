@@ -1,5 +1,4 @@
 from aiogram import Bot
-from mine.params import my_id
 from config_reader import config
 
 async def bot_start(bot: Bot):

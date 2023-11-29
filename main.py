@@ -4,7 +4,7 @@ from aiogram import Bot, Dispatcher, F, Router
 from aiogram.filters.command import Command, CommandStart
 from aiogram.types import Message
 from config_reader import config
-from handlers import commands, user_message
+from handlers import commands, user_message, callbacks
 from start_stop import bot_start, bot_stop
 
 async def main():
@@ -13,6 +13,7 @@ async def main():
 
     dp.include_routers(
         commands.router,
+        callbacks.router,
         user_message.router
     )
     dp.startup.register(bot_start)
