@@ -21,10 +21,12 @@ I'm a multifunctional bot, ready to offer you a wide range of capabilities. Here
 ☕ <b>Support the Bot:</b>
    If you enjoy my services, consider <a href="example.com">buying a cup of coffee</a> for my master!
 
-Feel free to explore these features ✨
+Feel free to explore these features  <b>(っ◔◡◔)っ</b>✨
 """
-menu = ''
-tiktok_assistant_menu = """
+
+menu = '<b>(っ◔◡◔)っ</b> Here\'s my menu'
+
+tt_assistant_menu = """
 <b>Welcome to the TikTok Assistant!</b> 
 Choose an option to enhance your TikTok experience:
 
@@ -34,7 +36,25 @@ Choose an option to enhance your TikTok experience:
 <b>2. Tags Generator 🏷️</b>
    Generate tags for your TikTok video to boost its visibility and promote it effectively.
 """
+
 tt_video_download = """
-Ok. Let\'s do it!
+Ok, let\'s do it!
 Send me the link to a video that you want to download.
+"""
+
+tt_wrong_format = """
+❌ Message that you sent to me is not a link or has a wrong format.
+It should look like ⬇
+<b><u>https://www.tiktok.com/@username/video/12345...</u></b>
+"""
+
+tt_wrong_link = """
+❌ Link that you sent to me is invalid.
+It should look like ⬇
+<b><u>https://www.tiktok.com/@username/video/12345...</u></b>
+"""
+
+tt_sending_video = """
+⏳ Sending the video... 
+This process takes more time if the video is long or high quality.
 """
