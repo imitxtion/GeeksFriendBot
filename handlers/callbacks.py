@@ -36,7 +36,7 @@ async def cb_download_video(cb: CallbackQuery):
         except KeyError:
             await msg.edit_text('❌ Link that you\'ve sent is incorrect. Try another one.')
 
-        await msg.edit_text('Sending the video... \n<u>It\'ll take a while if the video is high quality.</u>')
+        await msg.edit_text('Sending the video... \nIt\'ll take a while if the video is high quality.')
         await message.answer_video(URLInputFile(video_link))
         await msg.delete()
 
