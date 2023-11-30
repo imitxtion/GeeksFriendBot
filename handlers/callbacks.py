@@ -20,7 +20,9 @@ async def cb_download_video(cb: CallbackQuery):
 
     @router.message()
     async def wrong_format_alert(msg: Message):
-        if 'http' not in msg.text or 'tiktok' not in msg.text:
+        if ('http' not in msg.text 
+            or 'tiktok' not in msg.text
+            or 'video' not in msg.text):
             await msg.answer(text.tt_wrong_format)
         else:
             #@router.message(LinkFilter())
