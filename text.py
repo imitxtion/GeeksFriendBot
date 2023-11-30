@@ -21,7 +21,7 @@ I'm a multifunctional bot, ready to offer you a wide range of capabilities. Here
 ☕ <b>Support the Bot:</b>
    If you enjoy my services, consider <a href="example.com">buying a cup of coffee</a> for my master!
 
-Feel free to explore these features  <b>(っ◔◡◔)っ</b>✨
+Feel free to explore these features  \n<b>(っ◔◡◔)っ</b>✨
 """
 
 menu = '<b>(っ◔◡◔)っ</b> Here\'s my menu'
@@ -43,13 +43,8 @@ Send me the link to a video that you want to download.
 """
 
 tt_wrong_format = """
-❌ Message that you sent to me is not a link or has a wrong format.
-It should look like ⬇
-<b><u>https://www.tiktok.com/@username/video/12345...</u></b>
-"""
-
-tt_wrong_link = """
-❌ Link that you sent to me is invalid.
+<b>(っ◔_◔)っ</b> ❌
+   Message that you sent to me is not a link or has a wrong format.
 It should look like ⬇
 <b><u>https://www.tiktok.com/@username/video/12345...</u></b>
 """
