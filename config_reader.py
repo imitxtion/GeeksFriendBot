@@ -2,7 +2,6 @@ from pydantic import SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
-    # secretSrt для конфиденциальной информации
     token: SecretStr
     admin_id: SecretStr
     rapidapi_key: SecretStr

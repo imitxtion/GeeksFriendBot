@@ -1,13 +1,11 @@
 import text
 import requests
-import asyncio
 
 from keyboards import inline
 from aiogram import Router, F, Bot, Dispatcher
 from aiogram.types import CallbackQuery, Message, URLInputFile
-from aiogram.filters import Filter
+from aiogram.fsm.context import FSMContext
 from config_reader import config
-from aiogram.fsm.context import FSMContext 
 from utils.states import PickState
 
 router = Router()
@@ -64,7 +62,7 @@ async def cb_send_feedback(cb: CallbackQuery, state: FSMContext):
     await cb.message.answer(text.send_feedback)
 
 @router.message(PickState.sending_feedback)
-async def send_feedback_to_admin(msg: Message, bot: Bot, state: FSMContext):
+async def send_feedback_to_admin(msg: Message, bot: Bot):
     username = msg.from_user.username
     user_id = msg.from_user.id
     user_feedback = msg.text
@@ -75,7 +73,3 @@ async def send_feedback_to_admin(msg: Message, bot: Bot, state: FSMContext):
         await msg.answer(text.send_feedback_success)
     except:
         await msg.answer(text.send_feedback_error)
-# # filter for links
-# class LinkFilter(Filter):
-#     async def __call__(self, message: Message) -> bool:
-#         return message.text.startswith('http')

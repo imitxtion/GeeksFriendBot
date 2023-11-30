@@ -1,7 +1,4 @@
-from aiogram import Router, F
-from aiogram.filters import Command, StateFilter
 from aiogram.fsm.state import StatesGroup, State
-from aiogram.fsm.context import FSMContext 
 
 class PickState(StatesGroup):
     info_viewing = State()

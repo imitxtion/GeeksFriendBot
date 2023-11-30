@@ -1,8 +1,6 @@
-import asyncio, logging, text
+import asyncio, logging
 
-from aiogram import Bot, Dispatcher, F, Router
-from aiogram.filters.command import Command, CommandStart
-from aiogram.types import Message
+from aiogram import Bot, Dispatcher
 from config_reader import config
 from handlers import commands, user_message, callbacks
 from start_stop import bot_start, bot_stop
