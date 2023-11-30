@@ -53,3 +53,19 @@ tt_sending_video = """
 ⏳ Sending the video... 
 This process takes more time if the video is long or high quality.
 """
+
+send_feedback = """
+📬 <b>Your feedback is important for my improvement!</b>
+I'll pass on your next message to my master.
+"""
+
+send_feedback_success = """
+<b>(っ◔◡◔)っ</b> ✅
+   Message sent successfully. Thank you!
+"""
+
+send_feedback_error = """
+<b>(っ◔_◔)っ</b> ❌
+   An error occurred while sending your message. 
+Try again later or contact my master directly: <b><u>@alex_develor</u></b>
+"""
