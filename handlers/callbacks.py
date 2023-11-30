@@ -27,7 +27,7 @@ async def cb_download_video(cb: CallbackQuery, state: FSMContext):
     await cb.message.answer(text.tt_video_download)
 
 @router.message(PickState.tt_downloading)
-async def wrong_format_alert(msg: Message):
+async def download_video(msg: Message):
     if ('http' not in msg.text 
         or 'tiktok' not in msg.text
         or 'video' not in msg.text):
