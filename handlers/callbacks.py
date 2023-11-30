@@ -66,7 +66,11 @@ async def send_feedback_to_admin(msg: Message, bot: Bot):
     username = msg.from_user.username
     user_id = msg.from_user.id
     user_feedback = msg.text
-    admin_message = f'New message from user @{username} (id: {user_id}):\n{user_feedback}'
+    admin_message = text.admin_new_message.format(
+        username=username, 
+        user_id=user_id, 
+        user_feedback=user_feedback
+    )
 
     try:
         await bot.send_message(config.admin_id.get_secret_value(), admin_message)

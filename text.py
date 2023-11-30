@@ -24,7 +24,10 @@ I'm a multifunctional bot, ready to offer you a wide range of capabilities. Here
 Feel free to explore these features  \n<b>(っ◔◡◔)っ</b>✨
 """
 
-menu = '<b>(っ◔◡◔)っ</b> Here\'s my menu'
+menu = '''
+<b>(っ◔◡◔)っ</b> 📃 
+   Here\'s my menu'
+'''
 
 tt_assistant_menu = """
 <b>Welcome to the TikTok Assistant!</b> 
@@ -69,3 +72,21 @@ send_feedback_error = """
    An error occurred while sending your message. 
 Try again later or contact my master directly: <b><u>@alex_develor</u></b>
 """
+
+admin_new_message = """
+<b>(っ◔◡◔)っ</b> ✉
+   Master, you've received a new message! 
+From: @{username}, id: {user_id}
+   
+{user_feedback}
+"""
+
+wrong_message = """
+<b>(っ◔_◔)っ</b> ❌ 
+   Sorry, I don\'t understand you. 
+Use "/commands" to see the list of available commands.
+"""
+
+bot_start = '<b>(っ◔◡◔)っ ✅ \n\tBot launched!</b>'
+
+bot_stop = '<b>(っ◔_◔)っ</b> ❌ \n\tBot stopped!</b>'
