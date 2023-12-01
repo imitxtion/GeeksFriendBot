@@ -57,6 +57,12 @@ tt_sending_video = """
 This process takes more time if the video is long or high quality.
 """
 
+generate_tags = """
+   Ok! Let\'s generate tags for your TikTok video.
+Input a <u>key-word</u> (main theme of a video).
+<b>Example:</b> Sport
+"""
+
 send_feedback = """
 📬 <b>Your feedback is important for my improvement!</b>
 I'll pass on your next message to my master.
@@ -95,4 +101,9 @@ bot_start = """
 bot_stop = """
 <b>(っ◔_◔)っ</b> ❌
    <b>Bot stopped!</b>
+"""
+
+buy_coffee = """
+   If you want to support my development, you can do it here:
+<b>(っ◔◡◔)っ <u>https://www.buymeacoffee.com/develor</u></b> 
 """

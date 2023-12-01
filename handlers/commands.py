@@ -17,3 +17,23 @@ async def cmd_start(msg: Message, state: FSMContext):
 async def cmd_menu(msg: Message, state: FSMContext):
     await state.set_state(PickState.menu_viewing)
     await msg.answer(text.menu, reply_markup=inline.main_kb)
+
+@router.message(Command('video'))
+async def cmd_video(msg: Message, state: FSMContext):
+    await state.set_state(PickState.tt_downloading)
+    await msg.answer(text.tt_video_download)
+
+@router.message(Command('tags'))
+async def cmd_feedback(msg: Message, state: FSMContext):
+    await state.set_state(PickState.tt_generating_tags)
+    await msg.answer(text.generate_tags)
+
+@router.message(Command('feedback'))
+async def cmd_feedback(msg: Message, state: FSMContext):
+    await state.set_state(PickState.sending_feedback)
+    await msg.answer(text.send_feedback)
+
+@router.message(Command('coffee'))
+async def cmd_feedback(msg: Message, state: FSMContext):
+    await state.set_state(PickState.buying_coffee)
+    await msg.answer(text.buy_coffee)

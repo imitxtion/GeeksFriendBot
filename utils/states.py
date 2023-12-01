@@ -7,3 +7,4 @@ class PickState(StatesGroup):
     tt_downloading = State()
     tt_generating_tags = State()
     sending_feedback = State()
+    buying_coffee = State()
