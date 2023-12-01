@@ -13,10 +13,20 @@ async def cmd_start(msg: Message, state: FSMContext):
     await state.set_state(PickState.info_viewing)
     await msg.answer(text.greeting.format(name=msg.from_user.full_name.title()), reply_markup=inline.main_kb)
 
+@router.message(Command('info'))
+async def cmd_start(msg: Message, state: FSMContext):
+    await state.set_state(PickState.info_viewing)
+    await msg.answer(text.info)
+
 @router.message(Command('menu'))
 async def cmd_menu(msg: Message, state: FSMContext):
     await state.set_state(PickState.menu_viewing)
     await msg.answer(text.menu, reply_markup=inline.main_kb)
+
+@router.message(Command('commands'))
+async def cmd_commands(msg: Message, state: FSMContext):
+    await state.set_state(PickState.commands_viewing)
+    await msg.answer(text.see_commands)
 
 @router.message(Command('video'))
 async def cmd_video(msg: Message, state: FSMContext):
@@ -26,7 +36,27 @@ async def cmd_video(msg: Message, state: FSMContext):
 @router.message(Command('tags'))
 async def cmd_feedback(msg: Message, state: FSMContext):
     await state.set_state(PickState.tt_generating_tags)
-    await msg.answer(text.generate_tags)
+    await msg.answer(text.tt_generate_tags)
+
+@router.message(Command('chatgpt'))
+async def cmd_commands(msg: Message, state: FSMContext):
+    await state.set_state(PickState.talking_chatgpt)
+    await msg.answer()
+
+@router.message(Command('todo'))
+async def cmd_commands(msg: Message, state: FSMContext):
+    await state.set_state(PickState.todo_writing)
+    await msg.answer()
+
+@router.message(Command('ongoings'))
+async def cmd_commands(msg: Message, state: FSMContext):
+    await state.set_state(PickState.browse_ongoings)
+    await msg.answer()
+
+@router.message(Command('favanime'))
+async def cmd_commands(msg: Message, state: FSMContext):
+    await state.set_state(PickState.edit_anime_list)
+    await msg.answer()
 
 @router.message(Command('feedback'))
 async def cmd_feedback(msg: Message, state: FSMContext):

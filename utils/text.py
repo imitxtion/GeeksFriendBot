@@ -18,10 +18,36 @@ I'm a multifunctional bot, ready to offer you a wide range of capabilities. Here
 5. <b>Feedback 📬</b>
    - Found a bug or have suggestions? Feel free to send a message to my master.
 
-☕ <b>Support the Bot:</b>
+☕ <b>Support my development:</b>
    If you enjoy my services, consider <a href="example.com">buying a cup of coffee</a> for my master!
 
-Feel free to explore these features  \n<b>(っ◔◡◔)っ</b>✨
+Feel free to explore these features \n<b>(っ◔◡◔)っ</b>✨
+"""
+
+info = """
+<b>(っ◔◡◔)っ</b>✨
+   I'm a multifunctional bot, ready to offer you a wide range of capabilities. Here are some of my features:
+
+1. <b>TikTok Helper 🚀</b>
+   - Download any TikTok video <u><b>without watermark</b></u> by simply sending a link to me!
+   - AI-generated tags for your TikTok videos to boost their visibility and promotion.
+
+2. <b>ChatGPT 💬</b>
+   - Engage in a conversation with ChatGPT hassle-free! No need to open a browser or download any apps.
+
+3. <b>To-Do List 📝</b>
+   - Write down your tasks, and I'll send you notifications to ensure you never forget anything.
+
+4. <b>Anime Assistant ⛩</b>
+   - Stay updated on ongoing anime and create your list of favorite anime titles.
+
+5. <b>Feedback 📬</b>
+   - Found a bug or have suggestions? Feel free to send a message to my master.
+
+☕ <b>Support my development:</b>
+   If you enjoy my services, consider <a href="example.com">buying a cup of coffee</a> for my master!
+
+Type /menu or /commands to explore how I can help you.
 """
 
 menu = '''
@@ -57,7 +83,7 @@ tt_sending_video = """
 This process takes more time if the video is long or high quality.
 """
 
-generate_tags = """
+tt_generate_tags = """
    Ok! Let\'s generate tags for your TikTok video.
 Input a <u>key-word</u> (main theme of a video).
 <b>Example:</b> Sport
@@ -106,4 +132,27 @@ bot_stop = """
 buy_coffee = """
    If you want to support my development, you can do it here:
 <b>(っ◔◡◔)っ <u>https://www.buymeacoffee.com/develor</u></b> 
+"""
+
+see_commands = """
+<b>(っ◔◡◔)っ</b> 📃
+   Here's the list of available commands:
+
+/info - general info
+/menu - main menu
+/commands - available commands
+
+/video - download video from TikTok w/o watermark
+/tags - generate tags for your TikTok video
+
+/chatgpt - talk with ChatGPT
+
+/todo - create a notification for a certain time
+
+/ongoings - check the state of anime ongoings
+/favanime - edit the list of your favourite anime
+
+/feedback - send a message to my master
+
+/coffee - support my development
 """

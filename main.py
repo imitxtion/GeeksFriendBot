@@ -2,7 +2,7 @@ import asyncio, logging
 
 from aiogram import Bot, Dispatcher
 from utils.config_reader import config
-from handlers import commands, user_message, callbacks
+from handlers import commands, user_message, callbacks, state_handlers
 from utils.start_stop import bot_start, bot_stop
 
 async def main():
@@ -12,6 +12,7 @@ async def main():
     dp.include_routers(
         commands.router,
         callbacks.router,
+        state_handlers.router,
         user_message.router
     )
     dp.startup.register(bot_start)
