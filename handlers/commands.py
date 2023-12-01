@@ -1,10 +1,9 @@
-import text
-
 from aiogram import Router
 from aiogram.filters.command import Command, CommandStart
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext 
 from keyboards import inline
+from utils import text
 from utils.states import PickState
 
 router = Router()

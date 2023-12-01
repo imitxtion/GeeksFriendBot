@@ -1,11 +1,11 @@
-import text
 import requests
 
 from keyboards import inline
 from aiogram import Router, F, Bot, Dispatcher
 from aiogram.types import CallbackQuery, Message, URLInputFile
 from aiogram.fsm.context import FSMContext
-from config_reader import config
+from utils import text
+from utils.config_reader import config
 from utils.states import PickState
 
 router = Router()

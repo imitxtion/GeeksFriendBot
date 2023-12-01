@@ -1,9 +1,9 @@
 import asyncio, logging
 
 from aiogram import Bot, Dispatcher
-from config_reader import config
+from utils.config_reader import config
 from handlers import commands, user_message, callbacks
-from start_stop import bot_start, bot_stop
+from utils.start_stop import bot_start, bot_stop
 
 async def main():
     bot = Bot(token=config.token.get_secret_value(), parse_mode='HTML')
