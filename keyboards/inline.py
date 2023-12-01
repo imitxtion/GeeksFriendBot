@@ -4,7 +4,7 @@ main_kb = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(text='🚀 TikTok Assistant', callback_data='tiktok'),
-            InlineKeyboardButton(text='💬 ChatGPT', callback_data='ai')        
+            InlineKeyboardButton(text='💬 ChatGPT', callback_data='chatgpt')        
         ],
         [
             InlineKeyboardButton(text='📝 To-Do List', callback_data='todo'),

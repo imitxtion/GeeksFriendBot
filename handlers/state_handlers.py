@@ -1,4 +1,5 @@
 import requests
+import openai
 
 from aiogram import Router, Bot, Dispatcher
 from aiogram.types import Message, URLInputFile
@@ -16,8 +17,6 @@ async def download_video(msg: Message):
         or 'video' not in msg.text):
         await msg.answer(text.tt_wrong_format)
     else:
-        #@router.message(LinkFilter())
-        #async def link_handler(message: Message):
         link = msg.text
         mssg = await msg.answer('⏳ Processing...')
 
@@ -33,6 +32,15 @@ async def download_video(msg: Message):
         await mssg.edit_text(text.tt_sending_video)
         await msg.answer_video(URLInputFile(video_link))
         await mssg.delete()
+
+@router.message(PickState.talking_chatgpt)
+async def start_chatgpt(msg: Message):
+    openai.api_key = config.openai_api_key.get_secret_value()
+    response = openai.completions.create(
+        model='gpt-3.5-turbo-1106',
+        prompt=f'User: {msg.text}\nAssistant:'
+    )
+    await msg.answer(response.choices[0].text.strip())
 
 @router.message(PickState.sending_feedback)
 async def send_feedback_to_admin(msg: Message, bot: Bot):

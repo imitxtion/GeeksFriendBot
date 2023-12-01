@@ -30,6 +30,12 @@ async def cb_generate_tags(cb: CallbackQuery, state: FSMContext):
     await state.set_state(PickState.tt_generating_tags)
     await cb.message.answer(text.tt_generate_tags)
 
+@router.callback_query(F.data=='chatgpt')
+async def cb_send_feedback(cb: CallbackQuery, state: FSMContext):
+    await cb.answer()
+    await state.set_state(PickState.talking_chatgpt)
+    await cb.message.answer(text.talk_chatgpt)
+
 @router.callback_query(F.data=='feedback')
 async def cb_send_feedback(cb: CallbackQuery, state: FSMContext):
     await cb.answer()

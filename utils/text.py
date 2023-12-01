@@ -89,6 +89,11 @@ Input a <u>key-word</u> (main theme of a video).
 <b>Example:</b> Sport
 """
 
+talk_chatgpt = """
+<b>(っ◔◡◔)っ</b> ✅
+   ChatGPT connected. You can chat with it now.
+"""
+
 send_feedback = """
 📬 <b>Your feedback is important for my improvement!</b>
 I'll pass on your next message to my master.
