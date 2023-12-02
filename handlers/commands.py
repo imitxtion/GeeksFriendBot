@@ -35,13 +35,13 @@ async def cmd_video(msg: Message, state: FSMContext):
 
 @router.message(Command('tags'))
 async def cmd_feedback(msg: Message, state: FSMContext):
-    await state.set_state(PickState.tt_generating_tags)
-    await msg.answer(text.tt_generate_tags)
+    await state.set_state(PickState.function_unavailable)     # tt_generating_tags
+    await msg.answer(text.function_unavailable)     # tt_generate_tags
 
 @router.message(Command('chatgpt'))
 async def cmd_commands(msg: Message, state: FSMContext):
-    await state.set_state(PickState.talking_chatgpt)
-    await msg.answer(text.talk_chatgpt)
+    await state.set_state(PickState.function_unavailable)    # talking_chatgpt
+    await msg.answer(text.function_unavailable)     # talk_chatgpt
 
 @router.message(Command('todo'))
 async def cmd_commands(msg: Message, state: FSMContext):
