@@ -10,6 +10,10 @@ from utils.states import PickState
 router = Router()
 dp = Dispatcher()
 
+@router.message(PickState.function_unavailable)
+async def fucn_off(msg: Message):
+    await msg.answer(text.function_unavailable)
+
 @router.message(PickState.tt_downloading)
 async def download_video(msg: Message):
     if ('http' not in msg.text 

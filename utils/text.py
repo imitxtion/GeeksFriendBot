@@ -161,3 +161,8 @@ see_commands = """
 
 /coffee - support my development
 """
+
+function_unavailable = """
+<b>(っ◔_◔)っ</b> ❌
+   I'm sorry, this function is unavailable right now.
+"""

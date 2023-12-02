@@ -4,6 +4,7 @@ class PickState(StatesGroup):
     info_viewing = State()
     menu_viewing = State()
     commands_viewing = State()
+    function_unavailable = State()
     tt_assistant = State()
     tt_downloading = State()
     tt_generating_tags = State()
