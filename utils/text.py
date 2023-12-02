@@ -94,6 +94,24 @@ talk_chatgpt = """
    ChatGPT connected. You can chat with it now.
 """
 
+find_sauce = """
+Ok. Let's do it!
+Send me a moment from any anime and I'll try to find it's timecode and name.
+<u>❗ <b>Please note that I could be wrong ❗</b></u>
+"""
+
+sauce_not_found = """
+<b>(っ◔_◔)っ</b> ❌
+   I don't know from where this picture is. 
+<b>Let's try another one?</b>
+"""
+
+sauce_server_error = """
+<b>(っ◔_◔)っ</b> ❌
+   Server error occured. 
+<b>Please, try again.</b>
+"""
+
 send_feedback = """
 📬 <b>Your feedback is important for my improvement!</b>
 I'll pass on your next message to my master.
@@ -155,6 +173,7 @@ see_commands = """
 /todo - create a notification for a certain time
 
 /ongoings - check the state of anime ongoings
+/sauce - find anime by screenshot
 /favanime - edit the list of your favourite anime
 
 /feedback - send a message to my master

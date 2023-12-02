@@ -53,6 +53,11 @@ async def cmd_commands(msg: Message, state: FSMContext):
     await state.set_state(PickState.browse_ongoings)
     await msg.answer()
 
+@router.message(Command('sauce'))
+async def cmd_find_sauce(msg: Message, state: FSMContext):
+    await state.set_state(PickState.looking_for_sauce)
+    await msg.answer(text.find_sauce)
+
 @router.message(Command('favanime'))
 async def cmd_commands(msg: Message, state: FSMContext):
     await state.set_state(PickState.edit_anime_list)

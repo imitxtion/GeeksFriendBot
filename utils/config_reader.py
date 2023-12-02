@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     admin_id: SecretStr
     rapidapi_key: SecretStr
     openai_api_key: SecretStr
+    saucenao_api_key: SecretStr
     model_config = SettingsConfigDict(env_file='.env', env_file_encoding='utf-8')
 
 config = Settings()

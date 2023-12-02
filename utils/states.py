@@ -11,6 +11,7 @@ class PickState(StatesGroup):
     talking_chatgpt = State()
     todo_writing = State()
     browse_ongoings = State()
+    looking_for_sauce = State()
     edit_anime_list = State()
     sending_feedback = State()
     buying_coffee = State()

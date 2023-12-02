@@ -36,6 +36,12 @@ async def cb_send_feedback(cb: CallbackQuery, state: FSMContext):
     await state.set_state(PickState.function_unavailable)   # talking_chatgpt
     await cb.message.answer(text.function_unavailable)    # talk_chatgpt
 
+@router.callback_query(F.data=='sauce')
+async def cb_find_sauce(cb: CallbackQuery, state: FSMContext):
+    await cb.answer()
+    await state.set_state(PickState.looking_for_sauce)
+    await cb.message.answer(text.find_sauce)
+
 @router.callback_query(F.data=='feedback')
 async def cb_send_feedback(cb: CallbackQuery, state: FSMContext):
     await cb.answer()

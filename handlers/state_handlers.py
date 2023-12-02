@@ -1,8 +1,13 @@
+import logging
 import requests
 import openai
 
 from aiogram import Router, Bot, Dispatcher
 from aiogram.types import Message, URLInputFile
+from aiogram.exceptions import TelegramBadRequest
+from saucenaopie import SauceNao
+from saucenaopie.helper import SauceIndex
+from saucenaopie.exceptions import UnknownServerError
 from utils import text
 from utils.config_reader import config
 from utils.states import PickState
@@ -45,6 +50,53 @@ async def start_chatgpt(msg: Message):
         prompt=f'User: {msg.text}\nAssistant:'
     )
     await msg.answer(response.choices[0].text.strip())
+
+@router.message(PickState.looking_for_sauce)
+async def find_sauce(msg: Message, bot: Bot):
+    mssg = await msg.answer('⏳ Processing...')
+    nao = SauceNao(api_key=config.saucenao_api_key.get_secret_value())
+    if msg.photo:
+        res = await bot.get_file(msg.photo[-1].file_id)
+        photo = await bot.download_file(res.file_path)
+        try:
+            sauce = nao.search(photo, result_limit=5, index=SauceIndex.ANIME and SauceIndex.H_ANIME)
+        except UnknownServerError:
+            await mssg.delete()
+            return msg.answer(text.sauce_server_error)
+        del photo
+        Found = True
+        try:
+            for result in sauce.results:
+                print(result.index, result.index.id, result.similarity, result.data)
+                if result.index.id == 21:
+                    Found = False
+                    if result.data.urls:
+                        await mssg.delete()
+                        await msg.answer_photo(result.data.urls[-1],
+                                                caption=f'<b>Anime:</b> {result.data.title}\n'
+                                                        f'<b>Similarity:</b> {result.similarity}%\n'
+                                                        f'<b>Episode:</b> {result.data.episode}\n' 
+                                                        f'<b>Timestamp:</b> {result.data.timestamp}')
+                    else:
+                        await mssg.delete()
+                        await msg.answer(f'<b>Anime:</b> {result.data.title}\n'
+                                         f'<b>Similarity:</b> {result.similarity}%\n'
+                                         f'<b>Episode:</b> {result.data.episode}\n' 
+                                         f'<b>Timestamp:</b> {result.data.timestamp}')
+                    break
+                elif result.index.id == 22:
+                    Found = False
+                    await mssg.delete()
+                    await msg.answer(f'<b>Anime:</b> {result.data.title}\n'
+                                     f'<b>Similarity:</b> {result.similarity}%\n'
+                                     f'<b>Episode:</b> {result.data.episode}\n' 
+                                     f'<b>Timestamp:</b> {result.data.timestamp}')
+                    break
+            if Found:
+                await mssg.delete()
+                await msg.answer(text.sauce_not_found)
+        except Exception as ex:
+            logging.error(ex)
 
 @router.message(PickState.sending_feedback)
 async def send_feedback_to_admin(msg: Message, bot: Bot):
