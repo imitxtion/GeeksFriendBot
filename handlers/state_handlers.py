@@ -1,15 +1,11 @@
-import logging
-import requests
-import openai
+import logging, requests, openai
 
 from aiogram import Router, Bot, Dispatcher
 from aiogram.types import Message, URLInputFile
-from aiogram.exceptions import TelegramBadRequest
 from saucenaopie import SauceNao
 from saucenaopie.helper import SauceIndex
 from saucenaopie.exceptions import UnknownServerError
-from utils import text
-from utils.config_reader import config
+from utils import text, secret_values
 from utils.states import PickState
 
 router = Router()
@@ -32,7 +28,7 @@ async def download_video(msg: Message):
         url = "https://tiktok-video-no-watermark2.p.rapidapi.com/"
         querystring = {"url":link, "hd":"1"}
         headers = {
-            "X-RapidAPI-Key": config.rapidapi_key.get_secret_value(),
+            "X-RapidAPI-Key": secret_values.RAPIDAPI_KEY,
             "X-RapidAPI-Host": "tiktok-video-no-watermark2.p.rapidapi.com"
         }
         response = requests.get(url, headers=headers, params=querystring)
@@ -44,7 +40,7 @@ async def download_video(msg: Message):
 
 @router.message(PickState.talking_chatgpt)
 async def start_chatgpt(msg: Message):
-    openai.api_key = config.openai_api_key.get_secret_value()
+    openai.api_key = secret_values.OPENAI_API_KEY
     response = openai.completions.create(
         model='gpt-3.5-turbo-1106',
         prompt=f'User: {msg.text}\nAssistant:'
@@ -54,7 +50,7 @@ async def start_chatgpt(msg: Message):
 @router.message(PickState.looking_for_sauce)
 async def find_sauce(msg: Message, bot: Bot):
     mssg = await msg.answer('⏳ Processing...')
-    nao = SauceNao(api_key=config.saucenao_api_key.get_secret_value())
+    nao = SauceNao(api_key=secret_values.SAUCENAO_API_KEY)
     if msg.photo:
         res = await bot.get_file(msg.photo[-1].file_id)
         photo = await bot.download_file(res.file_path)
@@ -110,7 +106,7 @@ async def send_feedback_to_admin(msg: Message, bot: Bot):
     )
 
     try:
-        await bot.send_message(config.admin_id.get_secret_value(), admin_message)
+        await bot.send_message(secret_values.ADMIN_ID, admin_message)
         await msg.answer(text.send_feedback_success)
     except:
         await msg.answer(text.send_feedback_error)

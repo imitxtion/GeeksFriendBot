@@ -1,10 +1,8 @@
-from utils import text
-
+from utils import text, secret_values
 from aiogram import Bot
-from utils.config_reader import config
 
 async def bot_start(bot: Bot):
-    await bot.send_message(config.admin_id.get_secret_value(), text= text.bot_start)
+    await bot.send_message(secret_values.ADMIN_ID, text= text.bot_start)
 
 async def bot_stop(bot: Bot):
-    await bot.send_message(config.admin_id.get_secret_value(), text= text.bot_stop)
+    await bot.send_message(secret_values.ADMIN_ID, text= text.bot_stop)

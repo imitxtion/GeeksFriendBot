@@ -4,13 +4,12 @@ from keyboards import inline
 from aiogram import Router, F, Bot, Dispatcher
 from aiogram.types import CallbackQuery
 from aiogram.fsm.context import FSMContext
-from utils import text
-from utils.config_reader import config
+from utils import text, secret_values
 from utils.states import PickState
 
 router = Router()
 dp = Dispatcher()
-bot = Bot(token=config.token.get_secret_value(), parse_mode='HTML')
+bot = Bot(token=secret_values.TOKEN, parse_mode='HTML')
 
 @router.callback_query(F.data=='tiktok')
 async def cb_tiktok(cb: CallbackQuery, state: FSMContext):
