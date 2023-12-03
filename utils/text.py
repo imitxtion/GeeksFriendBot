@@ -94,6 +94,19 @@ talk_chatgpt = """
    ChatGPT connected. You can chat with it now.
 """
 
+anime_assistant_menu = """
+<b>Welcome to the Anime Assistant!</b>
+
+<b>1) News 📰</b>
+   Stay updated with the latest news from the anime world.
+
+<b>2) Find Anime by Screenshot 🔎</b>
+   Send me a screenshot from any anime episode, and I'll identify its title, episode number, and timestamp for you.
+
+<b>3) List of Favorite Anime 📃</b>
+   Create and manage your list of favorite anime.
+"""
+
 find_sauce = """
 Ok. Let's do it!
 Send me a moment from any anime and I'll try to find it's timecode and name.
@@ -172,7 +185,7 @@ see_commands = """
 
 /todo - create a notification for a certain time
 
-/ongoings - check the state of anime ongoings
+/animenews - check the state of anime ongoings
 /sauce - find anime by screenshot
 /favanime - edit the list of your favourite anime
 

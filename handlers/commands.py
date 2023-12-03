@@ -46,12 +46,12 @@ async def cmd_commands(msg: Message, state: FSMContext):
 @router.message(Command('todo'))
 async def cmd_commands(msg: Message, state: FSMContext):
     await state.set_state(PickState.todo_writing)
-    await msg.answer()
+    await msg.answer('+')
 
-@router.message(Command('ongoings'))
-async def cmd_commands(msg: Message, state: FSMContext):
-    await state.set_state(PickState.browse_ongoings)
-    await msg.answer()
+@router.message(Command('animenews'))
+async def cmd_browse_news(msg: Message, state: FSMContext):
+    await state.set_state(PickState.browsing_news)
+    await msg.answer('+')
 
 @router.message(Command('sauce'))
 async def cmd_find_sauce(msg: Message, state: FSMContext):
@@ -59,9 +59,9 @@ async def cmd_find_sauce(msg: Message, state: FSMContext):
     await msg.answer(text.find_sauce)
 
 @router.message(Command('favanime'))
-async def cmd_commands(msg: Message, state: FSMContext):
+async def cmd_fav_anime_list(msg: Message, state: FSMContext):
     await state.set_state(PickState.edit_anime_list)
-    await msg.answer()
+    await msg.answer('+')
 
 @router.message(Command('feedback'))
 async def cmd_feedback(msg: Message, state: FSMContext):
