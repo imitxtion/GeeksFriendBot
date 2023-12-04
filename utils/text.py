@@ -57,7 +57,7 @@ menu = '''
 
 tt_assistant_menu = """
 <b>Welcome to the TikTok Assistant!</b> 
-Choose an option to enhance your TikTok experience:
+Here are the functions:
 
 <b>1. Video Downloader 🎥</b>
    Send me a TikTok video link, and I'll provide you with the downloadable file, <u>without any watermarks</u>.
@@ -96,14 +96,15 @@ talk_chatgpt = """
 
 anime_assistant_menu = """
 <b>Welcome to the Anime Assistant!</b>
+Here are the functions:
 
-<b>1) News 📰</b>
+<b>1) News ⛩</b>
    Stay updated with the latest news from the anime world.
 
 <b>2) Find Anime by Screenshot 🔎</b>
    Send me a screenshot from any anime episode, and I'll identify its title, episode number, and timestamp for you.
 
-<b>3) List of Favorite Anime 📃</b>
+<b>3) List of Favorite Anime 📌</b>
    Create and manage your list of favorite anime.
 """
 

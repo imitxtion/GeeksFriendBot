@@ -63,3 +63,9 @@ async def cb_send_feedback(cb: CallbackQuery, state: FSMContext):
     await cb.answer()
     await state.set_state(PickState.sending_feedback)
     await cb.message.answer(text.send_feedback)
+
+@router.callback_query(F.data=='coffee')
+async def cb_send_feedback(cb: CallbackQuery, state: FSMContext):
+    await cb.answer()
+    await state.set_state(PickState.buying_coffee)
+    await cb.message.answer(text.buy_coffee)

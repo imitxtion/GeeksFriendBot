@@ -31,11 +31,11 @@ tiktok_assistant_kb = InlineKeyboardMarkup(
 anime_assistant_kb = InlineKeyboardMarkup(
     inline_keyboard=[
         [
-            InlineKeyboardButton(text='News 📰', callback_data='anime_news'),
+            InlineKeyboardButton(text='News ⛩', callback_data='anime_news'),
             InlineKeyboardButton(text='Name finder 🔎', callback_data='sauce')
         ],
         [
-            InlineKeyboardButton(text='List of favourite anime', callback_data='fav_anime_list')
+            InlineKeyboardButton(text='List of favourite anime 📌', callback_data='fav_anime_list')
         ]
     ]
 )
