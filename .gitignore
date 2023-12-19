@@ -3,3 +3,4 @@ mine/
 .env
 config_reader.py
 secret_values.py
+venv/
