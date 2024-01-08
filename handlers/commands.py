@@ -1,3 +1,4 @@
+import asyncio
 from aiogram import Router
 from aiogram.filters.command import Command, CommandStart
 from aiogram.types import Message
@@ -56,9 +57,47 @@ async def cmd_commands(msg: Message, state: FSMContext):
     await msg.answer(text.function_unavailable)     # talk_chatgpt
 
 @router.message(Command('todo'))
-async def cmd_commands(msg: Message, state: FSMContext):
-    await state.set_state(PickState.todo_writing)
-    await msg.answer('+')
+async def cmd_todo(msg: Message, state: FSMContext):
+    await state.set_state(PickState.checking_todo_menu)
+    await msg.answer(text.todo_info, reply_markup=inline.todo_kb)
+
+@router.message(Command('newtask'))
+async def add_task(msg: Message, state: FSMContext):
+    await state.set_state(PickState.adding_new_task)
+    try:
+        user_tasks = {}
+        task_info = msg.text.replace("/newtask", "").strip()
+        task_data = task_info.split('#')
+
+        if len(task_data) >= 2:
+            task_description = task_data[0].strip()
+            task_datetime_str = task_data[1].strip()
+
+            task_datetime = datetime.strptime(task_datetime_str, "%Y-%m-%d %H:%M")
+
+            task = {
+                'description': task_description,
+                'datetime': task_datetime,
+                'user_id': msg.from_user.id
+            }
+            
+            user_id = msg.from_user.id
+            if user_id not in user_tasks:
+                user_tasks[user_id] = []
+            user_tasks[user_id].append(task)
+            
+            await msg.reply(text.adding_task_success.format(task=task_description, time= task_datetime))
+            time_difference = task_datetime - datetime.now()
+
+            await asyncio.sleep(time_difference.total_seconds())
+            await msg.reply(text.task_remind.format(task= task_description, time= task_datetime))
+
+        else:
+            await msg.reply(text.adding_task_error)
+            
+    except Exception:
+        await msg.reply(text.adding_task_error)
+
 
 @router.message(Command('animenews'))
 async def cmd_browse_news(msg: Message, state: FSMContext):

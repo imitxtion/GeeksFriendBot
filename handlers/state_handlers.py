@@ -10,6 +10,7 @@ from utils.states import PickState
 
 router = Router()
 dp = Dispatcher()
+bot = Bot(token=secret_values.TOKEN)
 
 @router.message(PickState.function_unavailable)
 async def fucn_off(msg: Message):
@@ -46,6 +47,10 @@ async def start_chatgpt(msg: Message):
         prompt=f'User: {msg.text}\nAssistant:'
     )
     await msg.answer(response.choices[0].text.strip())
+
+@router.message(PickState.browsing_tasks)
+async def browse_todos(msg: Message):
+    pass
 
 @router.message(PickState.looking_for_sauce)
 async def find_sauce(msg: Message, bot: Bot):

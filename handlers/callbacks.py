@@ -35,6 +35,23 @@ async def cb_send_feedback(cb: CallbackQuery, state: FSMContext):
     await state.set_state(PickState.function_unavailable)   # talking_chatgpt
     await cb.message.answer(text.function_unavailable)    # talk_chatgpt
 
+@router.callback_query(F.data=='todo')
+async def add_task(cb: CallbackQuery, state: FSMContext):
+    await cb.answer()
+    await state.set_state(PickState.checking_todo_menu)
+    await cb.message.answer(text.todo_info, reply_markup=inline.todo_kb)
+
+@router.callback_query(F.data=='add_task')
+async def add_task(cb: CallbackQuery, state: FSMContext):
+    await cb.answer()
+    await state.set_state(PickState.adding_new_task)
+    await cb.message.answer(text.add_task)
+
+@router.callback_query(F.data=='my_tasks')
+async def add_task(cb: CallbackQuery, state: FSMContext):
+    await cb.answer()
+    await state.set_state(PickState.browsing_tasks)
+
 @router.callback_query(F.data=='anime')
 async def cb_anime(cb: CallbackQuery, state: FSMContext):
     await cb.answer()

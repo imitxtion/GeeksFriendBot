@@ -28,6 +28,15 @@ tiktok_assistant_kb = InlineKeyboardMarkup(
     ]
 )
 
+todo_kb = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(text='Add task ➕', callback_data='add_task'),
+            InlineKeyboardButton(text='My tasks 📃', callback_data='my_tasks')
+        ]
+    ]
+)
+
 anime_assistant_kb = InlineKeyboardMarkup(
     inline_keyboard=[
         [

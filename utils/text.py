@@ -67,7 +67,7 @@ Here are the functions:
 """
 
 tt_video_download = """
-Ok, let\'s do it!
+Ok, let's do it!
 Send me the link to a video that you want to download.
 """
 
@@ -92,6 +92,45 @@ Input a <u>key-word</u> (main theme of a video).
 talk_chatgpt = """
 <b>(っ◔◡◔)っ</b> ✅
    ChatGPT connected. You can chat with it now.
+"""
+
+todo_info = """
+You want to add a new task or check your created tasks?
+"""
+
+add_task = """
+Let's do it!
+Use "/newtask YOUR TASK # TIME" to add a new task.
+<b>Example:</b> /newtask Add a new feature to my bot # 2024-01-10 12:00
+"""
+
+adding_task_success = """
+<b>(っ◔◡◔)っ</b> ✅
+   New task added succesfully!
+
+Task: {task}
+Time: {time}
+
+<b>I'll send you a notification at the set time.</b>
+"""
+
+adding_task_error = """
+<b>(っ◔_◔)っ</b> ❌
+   An error occured while adding a new task.
+<u>Make sure format of the command is correct and try again ⬇</u>
+/newtask <i>YOUR TASK</i> <u><b>#</b></u> <i>TIME</i>
+"""
+
+task_remind = """
+<b>(っ◔◡◔)っ</b> ✉
+   <b>Hey, you asked me to remind:</b>
+<b>Task:</b> {task}
+<b>Set time:</b> {time}
+"""
+
+browse_todos = """
+<b>(っ◔◡◔)っ</b> 📃 
+   Here's a list of your tasks:
 """
 
 anime_assistant_menu = """
