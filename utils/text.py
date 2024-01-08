@@ -120,6 +120,12 @@ sauce_not_found = """
 <b>Let's try another one?</b>
 """
 
+sauce_wrong_format = """
+<b>(っ◔_◔)っ</b> ❌
+   Message you sent to me is not a screenshot!
+<b>Please, try again.</b>
+"""
+
 sauce_server_error = """
 <b>(っ◔_◔)っ</b> ❌
    Server error occured. 

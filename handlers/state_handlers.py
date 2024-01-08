@@ -93,6 +93,9 @@ async def find_sauce(msg: Message, bot: Bot):
                 await msg.answer(text.sauce_not_found)
         except Exception as ex:
             logging.error(ex)
+    else:
+        await msg.reply(text.sauce_wrong_format)
+        await mssg.delete()
 
 @router.message(PickState.sending_feedback)
 async def send_feedback_to_admin(msg: Message, bot: Bot):
