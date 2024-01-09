@@ -21,11 +21,11 @@ async def download_video(msg: Message):
     if ('http' not in msg.text 
         or 'tiktok' not in msg.text
         or 'video' not in msg.text):
+
         await msg.answer(text.tt_wrong_format)
     else:
         link = msg.text
         mssg = await msg.answer('⏳ Processing...')
-
         url = "https://tiktok-video-no-watermark2.p.rapidapi.com/"
         querystring = {"url":link, "hd":"1"}
         headers = {

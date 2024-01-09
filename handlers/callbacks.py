@@ -1,5 +1,3 @@
-import requests
-
 from keyboards import inline
 from aiogram import Router, F, Bot, Dispatcher
 from aiogram.types import CallbackQuery
@@ -26,14 +24,14 @@ async def cb_download_video(cb: CallbackQuery, state: FSMContext):
 @router.callback_query(F.data=='generate_tags')
 async def cb_generate_tags(cb: CallbackQuery, state: FSMContext):
     await cb.answer()
-    await state.set_state(PickState.function_unavailable)   # tt_generating_tags
-    await cb.message.answer(text.function_unavailable)    # tt_generate_tags
+    await state.set_state(PickState.function_unavailable)   # text.tt_generating_tags
+    await cb.message.answer(text.function_unavailable)    # text.tt_generate_tags
 
 @router.callback_query(F.data=='chatgpt')
 async def cb_send_feedback(cb: CallbackQuery, state: FSMContext):
     await cb.answer()
-    await state.set_state(PickState.function_unavailable)   # talking_chatgpt
-    await cb.message.answer(text.function_unavailable)    # talk_chatgpt
+    await state.set_state(PickState.function_unavailable)   # text.talking_chatgpt
+    await cb.message.answer(text.function_unavailable)    # text.talk_chatgpt
 
 @router.callback_query(F.data=='todo')
 async def add_task(cb: CallbackQuery, state: FSMContext):

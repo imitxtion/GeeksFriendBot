@@ -1,4 +1,5 @@
 import asyncio
+
 from aiogram import Router
 from aiogram.filters.command import Command, CommandStart
 from aiogram.types import Message
@@ -97,7 +98,6 @@ async def add_task(msg: Message, state: FSMContext):
             
     except Exception:
         await msg.reply(text.adding_task_error)
-
 
 @router.message(Command('animenews'))
 async def cmd_browse_news(msg: Message, state: FSMContext):
