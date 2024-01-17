@@ -14,7 +14,7 @@ main_kb = InlineKeyboardMarkup(
             InlineKeyboardButton(text='📬 Send Feedback', callback_data='feedback'),
         ],
         [
-            InlineKeyboardButton(text='☕ Support the Bot', callback_data='support')
+            InlineKeyboardButton(text='☕ Support the Bot', callback_data='buy_coffee')
         ]
     ]
 )
