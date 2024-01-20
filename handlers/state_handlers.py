@@ -7,7 +7,7 @@ from saucenaopie.helper import SauceIndex
 from saucenaopie.exceptions import UnknownServerError
 from utils import text, secret_values
 from utils.states import PickState
-from utils.chatgpt import generate_answer
+from utils.chatgpt import generate_answer, generate_tags
 
 router = Router()
 dp = Dispatcher()
@@ -39,6 +39,13 @@ async def download_video(msg: Message):
         await proc.edit_text(text.tt_sending_video)
         await msg.answer_video(URLInputFile(video_link))
         await proc.delete()
+
+@router.message(PickState.tt_generating_tags)
+async def generating_tags(msg: Message):
+    proc = await msg.answer(text.processing_info)
+    answer = await generate_tags(msg.text)
+    await msg.answer(answer)
+    await proc.delete()
 
 @router.message(PickState.talking_chatgpt)
 async def start_chatgpt(msg: Message):

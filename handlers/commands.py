@@ -47,10 +47,10 @@ async def cmd_video(msg: Message, state: FSMContext):
     await state.set_state(PickState.tt_downloading)
     await msg.answer(text.tt_video_download)
 
-@router.message(Command('tags'))
+@router.message(Command('hashtags'))
 async def cmd_feedback(msg: Message, state: FSMContext):
-    await state.set_state(PickState.function_unavailable)     # tt_generating_tags
-    await msg.answer(text.function_unavailable)     # tt_generate_tags
+    await state.set_state(PickState.tt_generating_tags)
+    await msg.answer(text.tt_generate_tags)
 
 @router.message(Command('chatgpt'))
 async def cmd_commands(msg: Message, state: FSMContext):

@@ -85,8 +85,14 @@ This process takes more time if the video is long or high quality.
 
 tt_generate_tags = """
    Ok! Let\'s generate tags for your TikTok video.
-Input a <u>key-word</u> (main theme of a video).
-<b>Example:</b> Sport
+Send me the main theme of your video.
+<b>Example:</b> Sport, workout
+"""
+
+tt_generate_tags_prompt = """
+Can you please generate for me the best hashtags for my TikTok video?
+Theme of it: {vid_theme}
+Send the group of them without anything but spaces between. I'll just copy-paste. Thanks.
 """
 
 talk_chatgpt = """
