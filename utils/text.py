@@ -92,6 +92,7 @@ Input a <u>key-word</u> (main theme of a video).
 talk_chatgpt = """
 <b>(っ◔◡◔)っ</b> ✅
    ChatGPT connected. You can chat with it now.
+<u><i>Use any other command or button to exit this mode</i></u>
 """
 
 todo_info = """
@@ -244,3 +245,5 @@ function_unavailable = """
 <b>(っ◔_◔)っ</b> ❌
    I'm sorry, this function is unavailable right now.
 """
+
+processing_info = '⏳ Processing...'
