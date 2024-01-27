@@ -15,7 +15,8 @@ router = Router()
 @router.message(CommandStart())
 async def cmd_start(msg: Message, state: FSMContext, db: Database):
     if not db.user_exists(msg.from_user.id):
-        db.add_user(msg.from_user.id, msg.from_user.username)
+        formated_datetime = datetime.now().strftime('%Y-%m-%d %H:%M')
+        db.add_user(user_id= msg.from_user.id, user_name= msg.from_user.username, first_launch= formated_datetime)
     await state.set_state(PickState.info_viewing)
     await msg.answer(text.greeting.format(name=msg.from_user.full_name.title()), reply_markup=inline.main_kb)
 
@@ -55,35 +56,25 @@ async def cmd_todo(msg: Message, state: FSMContext):
     await msg.answer(text.todo_info, reply_markup=inline.todo_kb)
 
 @router.message(Command('newtask'))
-async def add_task(msg: Message, state: FSMContext):
+async def add_task(msg: Message, state: FSMContext, db: Database):
     await state.set_state(PickState.adding_new_task)
     try:
-        user_tasks = {}
         task_info = msg.text.replace("/newtask", "").strip()
         task_data = task_info.split('#')
 
         if len(task_data) >= 2:
             task_description = task_data[0].strip()
             task_datetime_str = task_data[1].strip()
-
             task_datetime = datetime.strptime(task_datetime_str, "%Y-%m-%d %H:%M")
-
-            task = {
-                'description': task_description,
-                'datetime': task_datetime,
-                'user_id': msg.from_user.id
-            }
-            
             user_id = msg.from_user.id
-            if user_id not in user_tasks:
-                user_tasks[user_id] = []
-            user_tasks[user_id].append(task)
-            
+
+            db.add_task(user_id, task_description, task_datetime)
+
             await msg.reply(text.adding_task_success.format(task=task_description, time= task_datetime))
             time_difference = task_datetime - datetime.now()
 
             await asyncio.sleep(time_difference.total_seconds())
-            await msg.reply(text.task_remind.format(task= task_description, time= task_datetime))
+            await msg.answer(text.task_remind.format(task= task_description, time= task_datetime))
 
         else:
             await msg.reply(text.adding_task_error)
