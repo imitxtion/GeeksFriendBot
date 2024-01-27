@@ -1,7 +1,7 @@
 import asyncio, logging
 
 from aiogram import Bot, Dispatcher
-from motor.motor_asyncio import AsyncIOMotorClient
+from database.db import Database
 from handlers import commands, user_message, callbacks, state_handlers
 from utils.start_stop import bot_start, bot_stop
 from utils import secret_values
@@ -9,8 +9,7 @@ from utils import secret_values
 async def main():
     bot = Bot(token=secret_values.TOKEN, parse_mode='HTML')
     dp = Dispatcher()
-    cluster =  AsyncIOMotorClient(secret_values.DB_CONNECTION)
-    db = cluster.GeeksFriendBot
+    db = Database('database/database.db')
 
     dp.include_routers(
         commands.router,

@@ -4,28 +4,20 @@ from aiogram import Router
 from aiogram.filters.command import Command, CommandStart
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext 
-from pymongo.errors import DuplicateKeyError
-from motor.core import AgnosticDatabase as MDB
-from contextlib import suppress
 from datetime import datetime
 from keyboards import inline
 from utils import text
 from utils.states import PickState
+from database.db import Database
 
 router = Router()
 
 @router.message(CommandStart())
-async def cmd_start(msg: Message, state: FSMContext, db: MDB):
+async def cmd_start(msg: Message, state: FSMContext, db: Database):
+    if not db.user_exists(msg.from_user.id):
+        db.add_user(msg.from_user.id, msg.from_user.username)
     await state.set_state(PickState.info_viewing)
     await msg.answer(text.greeting.format(name=msg.from_user.full_name.title()), reply_markup=inline.main_kb)
-    with suppress(DuplicateKeyError):
-        await db.Bot_users.insert_one(
-            {
-                '_id' : msg.from_user.id,
-                'username' : f'@{msg.from_user.username}',
-                'launch_date' : datetime.now().strftime("%Y-%m-%d, %H:%M:%S"),
-            }
-        )
 
 @router.message(Command('info'))
 async def cmd_start(msg: Message, state: FSMContext):

@@ -4,3 +4,4 @@ mine/
 config_reader.py
 secret_values.py
 venv/
+database/database.db
