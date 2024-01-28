@@ -1,5 +1,7 @@
 import sqlite3
 
+from datetime import datetime
+
 class Database:
     def __init__(self, db_file):
         self.connection = sqlite3.connect(db_file)
@@ -17,5 +19,9 @@ class Database:
 
     def add_task(self, user_id, task_description, task_datetime):
         with self.connection:
-            self.cursor.execute('insert into tasks (user_id, description, datetime) VALUES (?, ?, ?)',
-                                (user_id, task_description, task_datetime))
+            self.cursor.execute('insert into tasks (user_id, description, datetime) values (?, ?, ?)',
+                                (user_id, task_description, task_datetime,))
+            
+    def delete_old_tasks(self):
+        with self.connection:
+            self.cursor.execute('delete from tasks where datetime <= ?', (datetime.now().strftime('%Y-%m-%d %H:%M:%S'),))

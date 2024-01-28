@@ -8,12 +8,12 @@ from datetime import datetime
 from keyboards import inline
 from utils import text
 from utils.states import PickState
-from database.db import Database
+from database.db import Database as db
 
 router = Router()
 
 @router.message(CommandStart())
-async def cmd_start(msg: Message, state: FSMContext, db: Database):
+async def cmd_start(msg: Message, state: FSMContext, db: db):
     if not db.user_exists(msg.from_user.id):
         formated_datetime = datetime.now().strftime('%Y-%m-%d %H:%M')
         db.add_user(user_id= msg.from_user.id, user_name= msg.from_user.username, first_launch= formated_datetime)
@@ -54,9 +54,10 @@ async def cmd_commands(msg: Message, state: FSMContext):
 async def cmd_todo(msg: Message, state: FSMContext):
     await state.set_state(PickState.checking_todo_menu)
     await msg.answer(text.todo_info, reply_markup=inline.todo_kb)
+    db.delete_old_tasks()
 
 @router.message(Command('newtask'))
-async def add_task(msg: Message, state: FSMContext, db: Database):
+async def add_task(msg: Message, state: FSMContext, db: db):
     await state.set_state(PickState.adding_new_task)
     try:
         task_info = msg.text.replace("/newtask", "").strip()

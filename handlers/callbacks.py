@@ -4,6 +4,7 @@ from aiogram.types import CallbackQuery
 from aiogram.fsm.context import FSMContext
 from utils import text, secret_values
 from utils.states import PickState
+from database.db import Database as db
 
 router = Router()
 dp = Dispatcher()
@@ -34,10 +35,11 @@ async def cb_send_feedback(cb: CallbackQuery, state: FSMContext):
     await cb.message.answer(text.talk_chatgpt)
 
 @router.callback_query(F.data=='todo')
-async def add_task(cb: CallbackQuery, state: FSMContext):
+async def add_task(cb: CallbackQuery, state: FSMContext, db: db):
     await cb.answer()
     await state.set_state(PickState.checking_todo_menu)
     await cb.message.answer(text.todo_info, reply_markup=inline.todo_kb)
+    db.delete_old_tasks()
 
 @router.callback_query(F.data=='add_task')
 async def add_task(cb: CallbackQuery, state: FSMContext):
@@ -49,6 +51,7 @@ async def add_task(cb: CallbackQuery, state: FSMContext):
 async def add_task(cb: CallbackQuery, state: FSMContext):
     await cb.answer()
     await state.set_state(PickState.browsing_tasks)
+    db.delete_old_tasks()
 
 @router.callback_query(F.data=='anime')
 async def cb_anime(cb: CallbackQuery, state: FSMContext):
