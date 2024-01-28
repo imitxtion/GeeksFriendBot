@@ -71,11 +71,6 @@ async def cb_find_sauce(cb: CallbackQuery, state: FSMContext):
     await state.set_state(PickState.looking_for_sauce)
     await cb.message.answer(text.find_sauce)
 
-@router.callback_query(F.data=='fav_anime_list')
-async def cb_fav_anime_list(cb: CallbackQuery, state: FSMContext):
-    await cb.answer()
-    await state.set_state(PickState.edit_anime_list)
-
 @router.callback_query(F.data=='feedback')
 async def cb_send_feedback(cb: CallbackQuery, state: FSMContext):
     await cb.answer()

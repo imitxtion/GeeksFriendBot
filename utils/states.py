@@ -15,6 +15,5 @@ class PickState(StatesGroup):
     anime_assistant = State()
     browsing_news = State()
     looking_for_sauce = State()
-    edit_anime_list = State()
     sending_feedback = State()
     buying_coffee = State()

@@ -13,7 +13,7 @@ I'm a multifunctional bot, ready to offer you a wide range of capabilities. Here
    - Write down your tasks, and I'll send you notifications to ensure you never forget anything.
 
 4. <b>Anime Assistant ⛩</b>
-   - Stay updated on ongoing anime and create your list of favorite anime titles.
+   - Find anime name by screenshot and stay tuned with the latest anime news.
 
 5. <b>Feedback 📬</b>
    - Found a bug or have suggestions? Feel free to send a message to my master.
@@ -39,7 +39,7 @@ info = """
    - Write down your tasks, and I'll send you notifications to ensure you never forget anything.
 
 4. <b>Anime Assistant ⛩</b>
-   - Stay updated on ongoing anime and create your list of favorite anime titles.
+   - Find anime name by screenshot and stay tuned with the latest anime news.
 
 5. <b>Feedback 📬</b>
    - Found a bug or have suggestions? Feel free to send a message to my master.
@@ -149,9 +149,6 @@ Here are the functions:
 
 <b>2) Find Anime by Screenshot 🔎</b>
    Send me a screenshot from any anime episode, and I'll identify its title, episode number, and timestamp for you.
-
-<b>3) List of Favorite Anime 📌</b>
-   Create and manage your list of favorite anime.
 """
 
 find_sauce = """
@@ -240,7 +237,6 @@ see_commands = """
 
 /animenews - check the state of anime ongoings
 /sauce - find anime by screenshot
-/favanime - edit the list of your favourite anime
 
 /feedback - send a message to my master
 
