@@ -41,7 +41,7 @@ async def download_video(msg: Message):
         await proc.delete()
 
 @router.message(PickState.tt_generating_tags)
-async def generating_tags(msg: Message):
+async def generate_tags(msg: Message):
     proc = await msg.answer(text.processing_info)
     answer = await generate_tags(msg.text)
     await msg.answer(answer)
@@ -53,10 +53,6 @@ async def start_chatgpt(msg: Message):
     answer = await generate_answer(msg.text)
     await msg.answer(answer)
     await proc.delete()
-
-@router.message(PickState.browsing_tasks)
-async def browse_todos(msg: Message):
-    pass
 
 @router.message(PickState.looking_for_sauce)
 async def find_sauce(msg: Message, bot: Bot):
@@ -109,7 +105,7 @@ async def find_sauce(msg: Message, bot: Bot):
         await proc.delete()
 
 @router.message(PickState.sending_feedback)
-async def send_feedback_to_admin(msg: Message, bot: Bot):
+async def send_feedback(msg: Message, bot: Bot):
     username = msg.from_user.username
     user_id = msg.from_user.id
     user_feedback = msg.text

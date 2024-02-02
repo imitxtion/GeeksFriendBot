@@ -21,7 +21,7 @@ async def cmd_start(msg: Message, state: FSMContext, db: db):
     await msg.answer(text.greeting.format(name=msg.from_user.full_name.title()), reply_markup=inline.main_kb)
 
 @router.message(Command('info'))
-async def cmd_start(msg: Message, state: FSMContext):
+async def cmd_info(msg: Message, state: FSMContext):
     await state.set_state(PickState.info_viewing)
     await msg.answer(text.info)
 
@@ -41,24 +41,25 @@ async def cmd_video(msg: Message, state: FSMContext):
     await msg.answer(text.tt_video_download)
 
 @router.message(Command('hashtags'))
-async def cmd_feedback(msg: Message, state: FSMContext):
+async def cmd_hashtags(msg: Message, state: FSMContext):
     await state.set_state(PickState.tt_generating_tags)
     await msg.answer(text.tt_generate_tags)
 
 @router.message(Command('chatgpt'))
-async def cmd_commands(msg: Message, state: FSMContext):
+async def cmd_chatgpt(msg: Message, state: FSMContext):
     await state.set_state(PickState.talking_chatgpt)
     await msg.answer(text.talk_chatgpt)
 
 @router.message(Command('todo'))
-async def cmd_todo(msg: Message, state: FSMContext):
+async def cmd_todo(msg: Message, state: FSMContext, db: db):
     await state.set_state(PickState.checking_todo_menu)
     await msg.answer(text.todo_info, reply_markup=inline.todo_kb)
     db.delete_old_tasks()
 
 @router.message(Command('newtask'))
-async def add_task(msg: Message, state: FSMContext, db: db):
+async def cmd_newtask(msg: Message, state: FSMContext, db: db):
     await state.set_state(PickState.adding_new_task)
+    db.delete_old_tasks()
     try:
         task_info = msg.text.replace("/newtask", "").strip()
         task_data = task_info.split('#')
@@ -83,13 +84,19 @@ async def add_task(msg: Message, state: FSMContext, db: db):
     except Exception:
         await msg.reply(text.adding_task_error)
 
+@router.message(Command('mytasks'))
+async def cmd_mytasks(msg: Message, state: FSMContext, db: db):
+    await state.set_state(PickState.browsing_tasks)
+    db.delete_old_tasks()
+    await msg.answer(db.get_formated_tasks(msg.from_user.id))
+
 @router.message(Command('animenews'))
-async def cmd_browse_news(msg: Message, state: FSMContext):
+async def cmd_animenews(msg: Message, state: FSMContext):
     await state.set_state(PickState.browsing_news)
     await msg.answer('+')
 
 @router.message(Command('sauce'))
-async def cmd_find_sauce(msg: Message, state: FSMContext):
+async def cmd_sauce(msg: Message, state: FSMContext):
     await state.set_state(PickState.looking_for_sauce)
     await msg.answer(text.find_sauce)
 
@@ -99,6 +106,6 @@ async def cmd_feedback(msg: Message, state: FSMContext):
     await msg.answer(text.send_feedback)
 
 @router.message(Command('coffee'))
-async def cmd_feedback(msg: Message, state: FSMContext):
+async def cmd_coffee(msg: Message, state: FSMContext):
     await state.set_state(PickState.buying_coffee)
     await msg.answer(text.buy_coffee)

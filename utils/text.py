@@ -115,8 +115,8 @@ adding_task_success = """
 <b>(っ◔◡◔)っ</b> ✅
    New task added succesfully!
 
-Task: {task}
-Time: {time}
+<b>Task:</b> {task}
+<b>Time:</b> {time}
 
 <b>I'll send you a notification at the set time.</b>
 """
@@ -131,6 +131,7 @@ adding_task_error = """
 task_remind = """
 <b>(っ◔◡◔)っ</b> ✉
    <b>Hey, you asked me to remind:</b>
+
 <b>Task:</b> {task}
 <b>Set time:</b> {time}
 """
@@ -138,6 +139,11 @@ task_remind = """
 browse_todos = """
 <b>(っ◔◡◔)っ</b> 📃 
    Here's a list of your tasks:
+"""
+
+task_list_empty = """
+Your TODO list is empty!
+<u>Use "/newtask YOUR TASK # TIME" to add a new task.</u>
 """
 
 anime_assistant_menu = """

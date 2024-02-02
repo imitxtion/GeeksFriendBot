@@ -1,6 +1,7 @@
 import sqlite3
 
 from datetime import datetime
+from utils import text
 
 class Database:
     def __init__(self, db_file):
@@ -25,3 +26,19 @@ class Database:
     def delete_old_tasks(self):
         with self.connection:
             self.cursor.execute('delete from tasks where datetime <= ?', (datetime.now().strftime('%Y-%m-%d %H:%M:%S'),))
+
+    def get_formated_tasks(self, user_id):
+        with self.connection:
+            tasks = self.cursor.execute('select * from tasks where user_id = ?', (user_id,)).fetchall()
+            if not tasks:
+                return text.task_list_empty
+            else:
+                counter = 1
+                formated_result = f'{text.browse_todos}'
+            
+                for task in tasks:
+                    formated_task = f'\n<b>Task {counter}</b>\n<b>Description:</b> {task[2]}\n<b>Time:</b> {task[3]}\n'
+                    counter += 1
+                    formated_result += formated_task
+
+                return formated_result
