@@ -125,7 +125,8 @@ adding_task_error = """
 <b>(っ◔_◔)っ</b> ❌
    An error occured while adding a new task.
 <u>Make sure format of the command is correct and try again ⬇</u>
-/newtask <i>YOUR TASK</i> <u><b>#</b></u> <i>TIME</i>
+
+<b>Example:</b> /newtask <i>Add a new feature to my bot</i> <u><b>#</b></u> <i>2024-01-10 12:00</i>
 """
 
 task_remind = """
@@ -230,22 +231,23 @@ see_commands = """
 <b>(っ◔◡◔)っ</b> 📃
    Here's the list of available commands:
 
-/info - general info
+/info - about me
 /menu - main menu
 /commands - available commands
 
 /video - download video from TikTok w/o watermark
-/tags - generate tags for your TikTok video
+/hashtags - generate tags for your TikTok video
 
 /chatgpt - talk with ChatGPT
 
-/todo - create a notification for a certain time
+/todo - manage TODOs
+/newtask - create a task
+/mytasks - check the list of your tasks
 
-/animenews - check the state of anime ongoings
+/news - browse the latest anime news
 /sauce - find anime by screenshot
 
 /feedback - send a message to my master
-
 /coffee - support my development
 """
 
