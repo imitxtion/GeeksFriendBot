@@ -6,7 +6,7 @@ from aiogram.types import Message
 from aiogram.fsm.context import FSMContext 
 from datetime import datetime
 from keyboards import inline
-from utils import text
+from utils import text, secret_values, parser
 from utils.states import PickState
 from database.db import Database as db
 
@@ -90,10 +90,13 @@ async def cmd_mytasks(msg: Message, state: FSMContext, db: db):
     db.delete_old_tasks()
     await msg.answer(db.get_formated_tasks(msg.from_user.id))
 
-@router.message(Command('animenews'))
+@router.message(Command('news'))
 async def cmd_animenews(msg: Message, state: FSMContext):
     await state.set_state(PickState.browsing_news)
-    await msg.answer('+')
+    proc = await msg.answer(text.processing_info)
+    news = await parser.get_news()
+    await msg.answer(news)
+    await proc.delete()
 
 @router.message(Command('sauce'))
 async def cmd_sauce(msg: Message, state: FSMContext):

@@ -158,6 +158,17 @@ Here are the functions:
    Send me a screenshot from any anime episode, and I'll identify its title, episode number, and timestamp for you.
 """
 
+anime_news = """
+<b>(っ◔◡◔)っ</b> 📃 
+   Here are the latest anime news:
+"""
+
+anime_mews_error = """
+<b>(っ◔_◔)っ</b> ❌
+   An error occured. 
+<b>Please, try again later.</b>
+"""
+
 find_sauce = """
 Ok. Let's do it!
 Send me a moment from any anime and I'll try to find it's timecode and name.

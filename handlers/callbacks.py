@@ -2,7 +2,7 @@ from keyboards import inline
 from aiogram import Router, F, Bot, Dispatcher
 from aiogram.types import CallbackQuery
 from aiogram.fsm.context import FSMContext
-from utils import text, secret_values
+from utils import text, secret_values, parser
 from utils.states import PickState
 from database.db import Database as db
 
@@ -65,7 +65,10 @@ async def cb_anime(cb: CallbackQuery, state: FSMContext):
 async def cb_browse_news(cb: CallbackQuery, state: FSMContext):
     await cb.answer()
     await state.set_state(PickState.browsing_news)
-    await cb.message.answer('+')
+    proc = await cb.message.answer(text.processing_info)
+    news = await parser.get_news()
+    await cb.message.answer(news)
+    await proc.delete()
 
 @router.callback_query(F.data=='sauce')
 async def cb_find_sauce(cb: CallbackQuery, state: FSMContext):
