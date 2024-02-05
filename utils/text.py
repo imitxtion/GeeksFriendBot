@@ -19,7 +19,7 @@ I'm a multifunctional bot, ready to offer you a wide range of capabilities. Here
    - Found a bug or have suggestions? Feel free to send a message to my master.
 
 ☕ <b>Support my development:</b>
-   If you enjoy my services, consider <a href="example.com">buying a cup of coffee</a> for my master!
+   If you enjoy my services, consider <a href="https://www.buymeacoffee.com/develor">buying a cup of coffee</a> for my master!
 
 Feel free to explore these features \n<b>(っ◔◡◔)っ</b>✨
 """
@@ -45,7 +45,7 @@ info = """
    - Found a bug or have suggestions? Feel free to send a message to my master.
 
 ☕ <b>Support my development:</b>
-   If you enjoy my services, consider <a href="example.com">buying a cup of coffee</a> for my master!
+   If you enjoy my services, consider <a href="https://www.buymeacoffee.com/develor">buying a cup of coffee</a> for my master!
 
 Type /menu or /commands to explore how I can help you.
 """
