@@ -16,7 +16,7 @@ async def generate_answer(user_message):
     )
     return chat_completion.choices[0].message.content
 
-async def generate_tags(vid_theme):
+async def generate_hashtags(vid_theme):
     chat_completion = await client.chat.completions.create(
         messages=[
             {
