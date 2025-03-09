@@ -1,4 +1,7 @@
 # Multifunctional Telegram Bot
+> [!WARNING]
+> This project is no longer being maintained.
+
 
 A versatile Telegram bot built with Python and Aiogram 2.0. It uses SQLite for data storage and provides multiple useful functionalities in one package.
 
